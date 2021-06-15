@@ -23,7 +23,7 @@ class ApiController extends AbstractController
         $data = ['gender' => $dummy_person->getGender(), 'firstname' => $dummy_person->getFirstname(), 'lastname' => $dummy_person->getLastname()];
         $json = json_encode($data);
         
-        //return json of instance
+        //create response and return json of instance
         $response = new Response($json);
         $response->headers->set('Conten-Type', 'application/json');
         return $response;

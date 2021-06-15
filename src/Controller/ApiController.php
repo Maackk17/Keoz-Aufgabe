@@ -23,11 +23,15 @@ class ApiController extends AbstractController
         $data = ['gender' => $dummy_person->getGender(), 'firstname' => $dummy_person->getFirstname(), 'lastname' => $dummy_person->getLastname()];
         $json = json_encode($data);
         
-        //return json to twig template
-        return $this->render('api/index.html.twig', [
-            'controller_name' => 'ApiController',
-            'json' => $json,
-        ]);
+        //return json
+        $response = new Response($json);
+        $response->headers->set('Conten-Type', 'application/json');
+        return $response;
+
+        // return $this->render('api/index.html.twig', [
+        //     'controller_name' => 'ApiController',
+        //     'json' => $json,
+        // ]);
         
     }
 }

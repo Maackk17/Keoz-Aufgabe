@@ -11,7 +11,7 @@ use App\Entity\Person;
 class ApiController extends AbstractController
 {
     #[Route('/api', name: 'api')]
-    public function index(): Response
+    public function api(): Response
     {
         //create new instance of entity Person with dummy values
         $dummy_person = new Person;
@@ -23,7 +23,7 @@ class ApiController extends AbstractController
         $data = ['gender' => $dummy_person->getGender(), 'firstname' => $dummy_person->getFirstname(), 'lastname' => $dummy_person->getLastname()];
         $json = json_encode($data);
         
-        //return json
+        //return json of instance
         $response = new Response($json);
         $response->headers->set('Conten-Type', 'application/json');
         return $response;
